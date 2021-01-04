@@ -5,16 +5,23 @@
              Title="Wydatki">
 
     <StackLayout Margin="40">
-        <Label Text="Dodaj nowy wydatek:" Margin="0,0,0,20"/>
-        <Entry x:Name="input" Placeholder="Nowy wydatek..." Keyboard="Numeric" Margin="0,0,0,20"/>
-        <Button Text="Dodaj" Clicked="SubmitClicked"/>
-        <ListView x:Name="expensesList">
+        <Label Text="Dodaj nowy wydatek:" FontSize="Large" Margin="0,0,0,20"/>
+        <FlexLayout>
+            <Entry x:Name="inputN" Placeholder="Na co wydatek..." Keyboard="Chat" FlexLayout.Grow="2"/>
+            <Entry x:Name="inputP" Placeholder="Cena..." Keyboard="Numeric" FlexLayout.Grow="1"/>
+        </FlexLayout>
+        <FlexLayout Margin="20,10,20,10" JustifyContent="SpaceEvenly">
+            <Entry x:Name="inputD" Placeholder="DD.MM.RRRR" Keyboard="Telephone" MaxLength="10"/>
+        </FlexLayout>
+        <Button Text="Dodaj" Clicked="SubmitClicked" Margin="0,0,0,20"/>
+        <ListView x:Name="expensesList" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout>
-                            <Label Text="{Binding PriceDisplay}" Margin="20"/>
-                        </StackLayout>
+                        <FlexLayout AlignItems="Center">
+                            <Label Text="{Binding Display}" FontSize="Medium"/>
+                            <Button Text="USUŃ" Margin="20"/>
+                        </FlexLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

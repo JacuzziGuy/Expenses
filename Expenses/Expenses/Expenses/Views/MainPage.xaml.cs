@@ -17,7 +17,12 @@ namespace Expenses.Views
 		{
 			expensesList.ItemsSource = items;
 			expensesList.ItemSelected += ExpensesListItemSelected;
-			input.Completed += InputCompleted;
+			inputN.Text = "";
+			inputP.Text = "";
+			inputD.Text = "";
+			inputN.Completed += InputNCompleted;
+			inputP.Completed += InputPCompleted;
+			inputD.Completed += InputDCompleted;
 		}
 
 		private void ExpensesListItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -25,12 +30,22 @@ namespace Expenses.Views
 			expensesList.SelectedItem = null;
 		}
 
-		private void InputCompleted(object sender, EventArgs e)
+		private void InputNCompleted(object sender, EventArgs e)
 		{
-			if(input.Text != "")
+			if(inputN.Text != "")
+				inputP.Focus();
+		}
+		private void InputPCompleted(object sender, EventArgs e)
+		{
+			if(inputP.Text != "" && inputN.Text != "")
+				inputD.Focus();
+		}
+		private void InputDCompleted(object sender, EventArgs e)
+		{
+			if (inputP.Text != "" && inputN.Text != "" && inputD.Text != "")
 			{
 				AddItem();
-				input.Focus();
+				inputN.Focus();
 			}
 		}
 		private void SubmitClicked(object sender, EventArgs e)
@@ -39,8 +54,17 @@ namespace Expenses.Views
 		}
 		private void AddItem()
 		{
-			items.Add(new ItemModel { Id = items.Count, Price = input.Text });
-			input.Text = "";
+			if (inputP.Text != "" && inputN.Text != "" && inputD.Text != "")
+			{
+				items.Add(new ItemModel { Id = items.Count, Name = inputN.Text, Price = inputP.Text, Date = inputD.Text });
+				inputN.Text = "";
+				inputP.Text = "";
+				inputD.Text = "";
+			}
+			else
+			{
+				DisplayAlert("UWAGA!","Upewnij się, że wszystkie pola są uzupełnione","OK");
+			}
 		}
 	}
 }
