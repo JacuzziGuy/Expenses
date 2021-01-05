@@ -11,7 +11,9 @@
             <Entry x:Name="inputP" Placeholder="Cena..." Keyboard="Numeric" FlexLayout.Grow="1"/>
         </FlexLayout>
         <FlexLayout Margin="20,10,20,10" JustifyContent="SpaceEvenly">
-            <Entry x:Name="inputD" Placeholder="DD.MM.RRRR" Keyboard="Telephone" MaxLength="10"/>
+            <Entry x:Name="inputD" Placeholder="DD" Keyboard="Numeric" MaxLength="2" FlexLayout.Grow="1"/>
+            <Entry x:Name="inputM" Placeholder="MM" Keyboard="Numeric" MaxLength="2" FlexLayout.Grow="1"/>
+            <Entry x:Name="inputY" Placeholder="RRRR" Keyboard="Numeric" MaxLength="4" FlexLayout.Grow="2"/>
         </FlexLayout>
         <Button Text="Dodaj" Clicked="SubmitClicked" Margin="0,0,0,20"/>
         <ListView x:Name="expensesList" HasUnevenRows="True">
@@ -20,7 +22,7 @@
                     <ViewCell>
                         <FlexLayout AlignItems="Center">
                             <Label Text="{Binding Display}" FontSize="Medium"/>
-                            <Button Text="USUŃ" Margin="20"/>
+                            <Button Text="USUŃ" Clicked="DeleteClicked" Margin="20" BindingContext="{Binding .}"/>
                         </FlexLayout>
                     </ViewCell>
                 </DataTemplate>
