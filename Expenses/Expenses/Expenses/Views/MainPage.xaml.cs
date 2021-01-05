@@ -81,7 +81,6 @@ namespace Expenses.Views
 			if (inputP.Text != "" && inputN.Text != "" && inputD.Text != "" && inputM.Text != "" && inputY.Text != "")
 			{
 				string day, month;
-				month = inputM.Text;
 				if (inputD.Text.Length == 1)
 					day = $"0{inputD.Text}";
 				else
@@ -106,8 +105,7 @@ namespace Expenses.Views
 		}
 		private void DeleteClicked(object sender, EventArgs e)
 		{
-			Button button = sender as Button;
-			ItemModel item = button.BindingContext as ItemModel;
+			ItemModel item = (sender as Button).BindingContext as ItemModel;
 			items.Remove(item);
 			db.Delete(item);
 		}
