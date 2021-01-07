@@ -3,6 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Expenses.App">
     <Application.Resources>
-
+        <Style TargetType="NavigationPage">
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="BarTextColor" Value="White"/>
+            <Setter Property="BarBackgroundColor" Value="#B0BEA9"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="#92AA83"/>
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="#92AA83"/>
+            <Setter Property="PlaceholderColor" Value="#E0EDC5"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="BackgroundColor" Value="#92AA83"/>
+        </Style>
     </Application.Resources>
 </Application>
