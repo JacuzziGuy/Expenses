@@ -20,14 +20,21 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <FlexLayout AlignItems="Center">
-                            <Label Text="{Binding Display}" FontSize="Medium"/>
-                            <Button Text="USUŃ" Clicked="DeleteClicked" Margin="20" BindingContext="{Binding .}"/>
-                        </FlexLayout>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Display}" FontSize="Medium" VerticalOptions="Center"/>
+                            <Button Grid.Row="0" Grid.Column="1" Text="USUŃ" Clicked="DeleteClicked" Margin="20" BindingContext="{Binding .}" VerticalOptions="Center"/>
+                        </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
     </StackLayout>
-    
+
 </ContentPage>
